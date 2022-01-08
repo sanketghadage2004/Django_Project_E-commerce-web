@@ -17,7 +17,7 @@ class Order(models.Model):
     date = models.DateTimeField(default=datetime.now())
     user_name = models.CharField(max_length=200)
     user_address = models.TextField()
-    status = models.CharField(choices=ORDER_STATUS, max_length=255, default='pending')
+    order_status = models.CharField(choices=ORDER_STATUS, max_length=255, default='pending')
     payment_status = models.BooleanField(default=False)
 
     def __str__(self):
