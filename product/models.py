@@ -15,7 +15,7 @@ class ProductCategory(models.Model):
 class Product(models.Model):
     """ product model """
     # product_images = models.ManyToManyField(product_images)
-    product_category = models.ForeignKey(ProductCategory , on_delete= models.CASCADE)
+    product_category = models.ForeignKey(ProductCategory , on_delete= models.CASCADE, related_name="Product")
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=8 , decimal_places=2)
     description = models.TextField()
