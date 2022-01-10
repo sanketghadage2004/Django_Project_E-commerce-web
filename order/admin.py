@@ -14,6 +14,8 @@ class OrderDetailAdmin(admin.StackedInline):
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'user','date', 'order_status', 'payment_status')
     inlines = (OrderDetailAdmin,)
+    list_filter = ('order_status', 'payment_status',)
+    date_hierarchy = 'date'
 
 admin.site.register(Order, OrderAdmin)
 
