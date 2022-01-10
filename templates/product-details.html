@@ -38,14 +38,28 @@
                             <span>(18 reviews)</span>
                         </div>
                         <div class="product__details__price">{{productDetail.price}}</div>
-                        <div class="product__details__quantity">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
+
+
+                        {% if request.user.is_authenticated %}
+                        <form method = "post" action ="{% url 'addToCart' %}" > 
+                            {% csrf_token %}
+                            <div class="product__details__quantity">
+                                <div class="quantity">
+                                    <div class="pro-qty">
+                                        <input type="text" value="1" name = "quantity">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <a href="#" class="primary-btn">ADD TO CARD</a>
+                            <input type="hidden" name="product_id" value={{productDetail.id}}>
+                            
+                            <button type = "submit" class="primary-btn">ADD TO CART</buttton>
+
+                        </form>
+                        {% else %}
+                            <span class= "text-danger">Please login to add Product in Cart</span> <br>
+                            <a href="#" class="primary-btn">LOGIN PLEASE</a>
+                        {% endif %}
+
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
                             <li><b>Availability</b> <span>In Stock</span></li>
@@ -150,8 +164,8 @@
                             </ul>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#">{{relatedProduct.name|title}}</a></h6>
-                            <h5>{{relatedProduct.price }}</h5>
+                            <h6><a href="{% url 'ProductDetailsView' product_id=relatedProduct.id %}">{{relatedProduct.name|title}}</a></h6>
+                            <h5>MRP {{relatedProduct.price }}</h5>
                         </div>
                     </div>
                 </div>

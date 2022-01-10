@@ -1,7 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse, request
 from django.views import View
 from product.models import ProductCategory, Product
+from django.contrib.auth import login
+from django.contrib.auth.models import User
+from django.http import request, HttpResponse
+
+
 # Create your views here.
 
 def home_page(request):
@@ -42,4 +46,12 @@ class ProductDetailsView(View):
             'productDetail': productDetail,
             'relatedProducts':relatedProducts
         }
+
+        # user = User.objects.get(id=2)
         return render(request, 'product-details.html', context )
+
+
+
+def test_login(request):
+    user = User.objects.get(id = 2)
+    login(request, user)

@@ -91,8 +91,8 @@
             data-setbg="{{Product.cover_image.url}}"
           ></div>
           <div class="featured__item__text">
-            <h6><a href="#">{{Product.name}}</a></h6>
-            <h5>{{Product.price}}</h5>
+            <h6><a href="{% url 'ProductDetailsView' product_id=Product.id %}">{{Product.name}}</a></h6>
+            <h5>MRP {{Product.price}} Rs</h5>
           </div>
         </div>
       </div>
