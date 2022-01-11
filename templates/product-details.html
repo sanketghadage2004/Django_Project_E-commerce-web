@@ -26,55 +26,44 @@
                         </div> -->
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="product__details__text">
-                        <h3>{{productDetail.name |title}}</h3>
-                        <div class="product__details__rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <span>(18 reviews)</span>
-                        </div>
-                        <div class="product__details__price">{{productDetail.price}}</div>
-
-
-                        {% if request.user.is_authenticated %}
-                        <form method = "post" action ="{% url 'addToCart' %}" > 
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__text">
+                    <h3>{{productDetail.name|title}}</h3>
+                    <!-- <div class="product__details__rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                        <span>(18 reviews)</span>
+                    </div> -->
+                    <div class="product__details__price">${{productDetail.price}}</div>
+                    {% if request.user.is_authenticated %}
+                        <form method="post" action="{% url 'addToCart' %}">
                             {% csrf_token %}
                             <div class="product__details__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
-                                        <input type="text" value="1" name = "quantity">
+                                        <input type="text" value="1" name="quantity">
                                     </div>
                                 </div>
                             </div>
-                            <input type="hidden" name="product_id" value={{productDetail.id}}>
-                            
-                            <button type = "submit" class="primary-btn">ADD TO CART</buttton>
-
+                            <input type="hidden" name="product_id" value="{{productDetail.id}}">
+                            <button type="submit" class="primary-btn">ADD TO CARD</button>
+                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         </form>
-                        {% else %}
-                            <span class= "text-danger">Please login to add Product in Cart</span> <br>
-                            <a href="#" class="primary-btn">LOGIN PLEASE</a>
-                        {% endif %}
+                    {% else %}
+                        <span class="text-info">Please login to add this product in your cart!</span>
+                        <a href="#" class="primary-btn">Login</a>
 
-                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-                        <ul>
-                            <li><b>Availability</b> <span>In Stock</span></li>
-                            <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                            <li><b>Share on</b>
-                                <div class="share">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                    {% endif %}
+                             
+                    <ul>
+                        <li><b>Availability</b> <span>In Stock</span></li>
+                        <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
+                    </ul>
                 </div>
+            </div>
                 <div class="col-lg-12">
                     <div class="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">

@@ -8,7 +8,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>OGANI | Template</title>
+    <title>E-SHOP | Template</title>
 
     <!-- Google Font -->
     <link
@@ -80,7 +80,7 @@
 
       <div class="humberger__menu__widget">
         <div class="header__top__right__language">
-          <img src="img/language.png" alt="" />
+          <img src="{% static 'img/language.png'%}" alt="" />
           <div>English</div>
           <span class="arrow_carrot-down"></span>
           <ul>
@@ -184,8 +184,8 @@
                   <a href="#"><i class="fa fa-heart"></i> <span>1</span></a>
                 </li>
                 <li>
-                  <a href="#"
-                    ><i class="fa fa-shopping-bag"></i> <span>3</span></a
+                  <a href="{% url 'MyCart'%}"
+                    ><i class="fa fa-shopping-bag"></i> <span></span></a
                   >
                 </li>
               </ul>
@@ -209,11 +209,11 @@
             <div class="footer__widget">
               <h6>Join Our Newsletter Now</h6>
               <p>
-                Get E-mail updates about our latest shop and special offers.
+                Get <strong>E-mail</strong> updates about our latest <strong>products</strong> and <strong>special offers</strong>.
               </p>
               <form action="#">
                 <input type="text" placeholder="Enter your mail" />
-                <button type="submit" class="site-btn">Subscribe</button>
+                <button type="submit" class="site-btn">Get Updates</button>
               </form>
               <div class="footer__widget__social">
                 <a href="#"><i class="fa fa-facebook"></i></a>
@@ -230,17 +230,17 @@
               <div class="footer__copyright__text">
                 <p>
                   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                  Copyright &copy;
+                  <strong>Copyright &copy;
                   <script>
                     document.write(new Date().getFullYear());
                   </script>
-                  All rights reserved | E-SHOP
+                  All rights reserved | E-SHOP</strong>
 
                   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
               </div>
               <div class="footer__copyright__payment">
-                <img src="img/payment-item.png" alt="" />
+                <img src="{% static 'img/payment-item.png' %}" alt="" />
               </div>
             </div>
           </div>
