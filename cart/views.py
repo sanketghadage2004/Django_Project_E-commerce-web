@@ -44,7 +44,61 @@ class MyCart(View):
                 'product_name': cartProduct.Product.name,
                 'product_price': cartProduct.Product.price,
                 'quantity': cartProduct.quantity,
-                'productTotal': productTotal
+                'productTotal': productTotal,
+                'cart_id':cartProduct.id
+            }
+        
+        
+        total = shippingCost + subTotal
+        carts = list(carts.values())
+
+        context = {
+            'product_categories': product_categories,
+            'cartProducts': carts,
+            'subTotal':subTotal,
+            'shippingCost': shippingCost,
+            'total':total,
+        }
+
+        return render(request, self.template_name, context)
+
+
+    def post(self, request):
+        cartsIds = request.POST.getlist('card_id')
+        quantities  = request.POST.getlist('quantity')
+        
+        for cartKey , cartsId in enumerate(cartsIds):
+            try:
+                cartObject = Cart.objects.get(id = cartsId)
+                if quantities[cartKey]== 0:
+                    cartObject.delete() 
+                else:
+                    cartObject.quantity = quantities[cartKey]
+            except Cart.DoesNotExist:
+                pass
+
+        return redirect('MyCart')
+
+
+class Checkout(View):
+    template_name = 'checkout.html'
+    def get(self, request):
+        product_categories = ProductCategory.objects.filter(status=True)
+        cartProducts = Cart.objects.filter(user=request.user)
+
+        carts = {}
+        subTotal = 0
+        total = 0
+        shippingCost = 50
+        for key, cartProduct in enumerate(cartProducts):
+            productTotal = int(cartProduct.quantity) * int(cartProduct.Product.price)
+            total += productTotal
+            subTotal += productTotal
+            carts[key] = {
+                
+                'product_name': cartProduct.Product.name,
+                'productTotal': productTotal,
+                
             }
         
         
@@ -59,4 +113,6 @@ class MyCart(View):
             'total':total,
         }
 
+
         return render(request, self.template_name, context)
+    

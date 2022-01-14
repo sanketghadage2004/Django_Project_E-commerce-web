@@ -29,7 +29,7 @@ class Product(models.Model):
 
 class Product_images(models.Model):
     """ multiple images model file """
-    product = models.ForeignKey(Product, on_delete= models.CASCADE)
+    product = models.ForeignKey(Product, on_delete= models.CASCADE, related_name= 'ProductImages')
     images = models.ImageField()
     status = models.BooleanField(default= True)
 

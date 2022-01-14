@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% load static %} {% block content %} 
+{% extends 'base.html' %}
+{% load static %} 
+{% block content %} 
 
 {% include 'banner.html' %}
 
@@ -58,12 +60,12 @@
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="banner__pic">
-          <img src="{% static 'img/banner/banner-1.jpg '%}" alt="" />
+          <img src="{% static 'img/banner/banner4.jpg '%}" alt="" />
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="banner__pic">
-          <img src="{% static 'img/banner/banner-2.jpg '%}" alt="" />
+          <img src="{% static 'img/banner/banner5.jpg '%}" alt="" />
         </div>
       </div>
     </div>
@@ -72,7 +74,7 @@
 <!-- Banner End -->
 
 <!-- Latest Product Section Begin -->
-<section class="latest-product spad">
+{% comment %} <section class="latest-product spad">
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-6">
@@ -273,7 +275,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> {% endcomment %}
 <!-- Latest Product Section End -->
 
 <!-- Blog Section Begin -->

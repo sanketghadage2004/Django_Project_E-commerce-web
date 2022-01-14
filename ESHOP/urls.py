@@ -24,6 +24,7 @@ import frontend
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('frontend.urls')),
-    path('cart', include('cart.urls')),
+    path('cart/', include('cart.urls')),
+    path('auth/', include('authentication.urls')),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
