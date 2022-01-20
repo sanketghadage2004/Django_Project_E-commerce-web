@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load cart_count %}
 <!DOCTYPE html>
 <html lang="zxx">
   <head>
@@ -66,7 +66,7 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
       <div class="humberger__menu__logo">
-        <a href="#"><img src="img/logo.png" alt="" /></a>
+        <a href="#"><img src="{% static 'img/logo.png' %}" alt="" /></a>
       </div>
       <div class="humberger__menu__cart">
         <ul>
@@ -74,7 +74,7 @@
             <a href="#"><i class="fa fa-heart"></i> <span>1</span></a>
           </li>
           <li>
-            <a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a>
+            <a href="{% url 'MyCart'%}"><i class="fa fa-shopping-bag"></i> <span>{% cartCount request%}</span></a>
           </li>
         </ul>
       </div>
@@ -158,7 +158,7 @@
           <div class="col-lg-3">
             <div class="header__logo">
               <a href="./index.html"><img src="img/logo.png" alt="" /></a>
-            </div>
+            </div> 
           </div>
           <div class="col-lg-6">
             <nav class="header__menu">
@@ -193,7 +193,7 @@
                 </li>
                 <li>
                   <a href="{% url 'MyCart'%}"
-                    ><i class="fa fa-shopping-bag"></i> <span></span></a
+                    ><i class="fa fa-shopping-bag"></i> <span>{%cartCount request %}</span></a
                   >
                 </li>
               </ul>

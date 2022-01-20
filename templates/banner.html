@@ -24,9 +24,9 @@
       <div class="col-lg-9">
         <div class="hero__search">
           <div class="hero__search__form">
-            <form action="#">
-              <input type="text" placeholder="What do you need?">
-              <button type="submit" class="site-btn">SEARCH</button>
+            <form action="{% url 'ProductListingView'%}" method = "get">
+              <input type="text" placeholder="What do you need?" name = "search" value = "{{request.GET.search}}">
+              <button type="submit" class="site-btn" >SEARCH</button>
             </form>
           </div>
           <div class="hero__search__phone">
@@ -34,12 +34,12 @@
               <i class="fa fa-phone"></i>
             </div>
             <div class="hero__search__phone__text">
-              <h5>+65 11.188.888</h5>
+              <h5>+91 90 21 188 888</h5>
               <span>support 24/7 time</span>
             </div>
           </div>
         </div>
-        <div class="hero__item set-bg" data-setbg="{%static 'img/banner/banner3.jpg'%}" style = "height:70%">
+        <div class="hero__item set-bg" data-setbg="{%static 'img/banner/banner3.jpg'%}" style = "height:80%">
           <div class="hero__text">
             <span>E-SHOP</span>
             <h2> 50 % <br />OFF</h2>

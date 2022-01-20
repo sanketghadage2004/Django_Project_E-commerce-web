@@ -15,7 +15,8 @@ class Login(View):
 
         context = {
         'product_categories':self.product_categories,
-        'form':form
+        'form':form,
+        
         }
         return render(request, self.template_name, context)
     

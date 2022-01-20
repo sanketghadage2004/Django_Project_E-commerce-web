@@ -16,7 +16,8 @@ def home_page(request):
     latestProductCategories = ProductCategory.objects.filter(status=True).order_by('-id')[0:5]
     context = {
         'product_categories':product_categories,
-        'latestProductCategories':latestProductCategories
+        'latestProductCategories':latestProductCategories,
+        
     }
     
     return render(request, 'home.html', context)
@@ -25,11 +26,21 @@ def home_page(request):
 class ProductListingView(View):
 
     def get(self, request, product_category_id= None):
+        search = request.GET.get('search')
+        searchDict = {
+            'status' : True,
+
+
+        }
+        if product_category_id:
+            searchDict['product_category_id'] = product_category_id
+        if search:
+            searchDict['name__contains']=search
         product_categories = ProductCategory.objects.filter(status=True)
-        products = Product.objects.filter(status = True, product_category_id = product_category_id)
+        products = Product.objects.filter(**searchDict)
         context = {
         'product_categories':product_categories,
-        'products': products
+        'products': products,
         }
         
         return render(request, 'product_listing.html', context) 
