@@ -1,9 +1,16 @@
+from venv import create
 from django.shortcuts import redirect, render
 from django.views import View
 from product.models import ProductCategory
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as AuthLogin, logout as AuthLogout
+from django.contrib.auth.models import User, auth
+from frontend import urls
+
+
 # Create your views here.
+"""LOG IN CLASS"""
+
 class Login(View):
 
     product_categories = ProductCategory.objects.filter(status=True)
@@ -34,5 +41,25 @@ class Login(View):
     
 
 def logout(request):
+    """LOG OUT"""
     AuthLogout(request)
-    return redirect('Login')
+    return redirect('home_page')
+
+def register(request):
+    # template_name = 'login.html'
+    if request.method =='POST':
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        username = request.POST['username']
+        email = request.POST['email']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+
+
+        user = User.objects.create_user(first_name = first_name, last_name = last_name,  username = username, email = email, password = password1)
+        user.save()
+        
+        print("user create successfully")
+        return redirect('home_page')
+    else:
+        return render(request, 'register.html')

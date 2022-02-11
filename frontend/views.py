@@ -63,6 +63,6 @@ class ProductDetailsView(View):
 
 
 
-def test_login(request):
-    user = User.objects.get(id = 2)
-    login(request, user)
+# def test_login(request):
+#     user = User.objects.get(id = 2)
+#     login(request, user)
