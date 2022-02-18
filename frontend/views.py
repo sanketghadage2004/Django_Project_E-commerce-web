@@ -63,6 +63,18 @@ class ProductDetailsView(View):
 
 
 
+
+
+def contact(request):
+
+    return render(request, 'contact.html' )
+
+# class Contact(View):
+
+#     def post(self):
+#         return render(request, 'home_page')
+
+
 # def test_login(request):
 #     user = User.objects.get(id = 2)
 #     login(request, user)

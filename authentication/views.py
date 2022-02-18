@@ -46,7 +46,6 @@ def logout(request):
     return redirect('home_page')
 
 def register(request):
-    # template_name = 'login.html'
     if request.method =='POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -59,7 +58,6 @@ def register(request):
         user = User.objects.create_user(first_name = first_name, last_name = last_name,  username = username, email = email, password = password1)
         user.save()
         
-        print("user create successfully")
-        return redirect('home_page')
+        return redirect('Login')
     else:
         return render(request, 'register.html')

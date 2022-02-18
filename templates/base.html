@@ -1,4 +1,6 @@
-{% load static %} {% load cart_count %}
+{% load static %} 
+
+{% load cart_count %}
 <!DOCTYPE html>
 <html lang="zxx">
   <head>
@@ -112,7 +114,7 @@
             </ul>
           </li>
           <li><a href="./blog.html">Blog</a></li>
-          <li><a href="./contact.html">Contact</a></li>
+          <li><a href="{% url 'contact-page'%}">Contact</a></li>
         </ul>
       </nav>
       <div id="mobile-menu-wrap"></div>
@@ -190,8 +192,8 @@
                     {% endfor %}
                   </ul>
                 </li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="javascript:void(0)">Contact</a></li>
+                <li><a href="{% url 'blog'%}">Blog</a></li>
+                <li><a href="{% url 'contact-page'%}">Contact</a></li>
               </ul>
             </nav>
           </div>
