@@ -106,7 +106,7 @@ class Checkout(View):
         carts = list(carts.values())
 
         context = {
-            'productCategories': product_categories,
+            'product_categories': product_categories,
             'cartProducts': carts,
             'subTotal':subTotal,
             'shippingCost': shippingCost,

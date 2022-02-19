@@ -43,9 +43,10 @@ class Login(View):
 def logout(request):
     """LOG OUT"""
     AuthLogout(request)
-    return redirect('home_page')
+    return redirect('Login')
 
 def register(request):
+    product_categories = ProductCategory.objects.filter(status=True)
     if request.method =='POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -60,4 +61,4 @@ def register(request):
         
         return redirect('Login')
     else:
-        return render(request, 'register.html')
+        return render(request, 'register.html',{'product_categories':product_categories})

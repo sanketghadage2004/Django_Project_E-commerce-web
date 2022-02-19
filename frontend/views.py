@@ -67,7 +67,10 @@ class ProductDetailsView(View):
 
 def contact(request):
 
-    return render(request, 'contact.html' )
+    product_categories = ProductCategory.objects.filter(status=True)
+
+
+    return render(request, 'contact.html',{ 'product_categories':product_categories} )
 
 # class Contact(View):
 
