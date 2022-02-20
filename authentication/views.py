@@ -41,11 +41,13 @@ class Login(View):
     
 
 def logout(request):
-    """LOG OUT"""
+    """  LOG OUT  """
     AuthLogout(request)
     return redirect('Login')
 
+
 def register(request):
+    """ USER RREGISTRATION """
     product_categories = ProductCategory.objects.filter(status=True)
     if request.method =='POST':
         first_name = request.POST['first_name']
