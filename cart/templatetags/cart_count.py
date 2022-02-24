@@ -5,10 +5,12 @@ from cart.models import Cart
 
 register = template.Library()
 
-@register.simple_tag # decoretors
+@register.simple_tag    # decoretors
 
 def cartCount(request):
-    carts = Cart.objects.filter(user = request.user).aggregate(cart_sum =Sum('quantity'))
-    # print(cartCount ,['cart_sum'])
-    # print(carts)
-    return carts['cart_sum']
+    # cart count display
+    if request.user.is_authenticated:
+        carts = Cart.objects.filter(user = request.user).aggregate(cart_sum =Sum('quantity'))
+        return carts['cart_sum']
+
+    return 0

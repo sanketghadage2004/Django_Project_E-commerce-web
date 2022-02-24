@@ -11,7 +11,6 @@ from django.http import request, HttpResponse
 def home_page(request):
     # showing product category
     product_categories = ProductCategory.objects.filter(status=True)
-
     # showing product on home page category wise
     latestProductCategories = ProductCategory.objects.filter(status=True).order_by('-id')[0:5]
     context = {
@@ -26,21 +25,43 @@ def home_page(request):
 class ProductListingView(View):
 
     def get(self, request, product_category_id= None):
+        product_categories = ProductCategory.objects.filter(status=True)
         search = request.GET.get('search')
+        sorting = request.GET.get('sorting')
+        print(request.GET)
+        minPrice=request.GET.get('min')
+        maxPrice=request.GET.get('max')
+
+        
         searchDict = {
             'status' : True,
+            }
 
 
-        }
-        if product_category_id:
+        if minPrice:
+            minPrice= int(minPrice.replace('$',''))
+            searchDict['price__gte'] = minPrice
+
+        if maxPrice:
+            maxPrice= int(maxPrice.replace('$',''))
+            searchDict['price__lte'] = maxPrice
+        
+        # print(minPrice)
+
+        if product_category_id and product_category_id != 'None':
             searchDict['product_category_id'] = product_category_id
         if search:
             searchDict['name__contains']=search
-        product_categories = ProductCategory.objects.filter(status=True)
-        products = Product.objects.filter(**searchDict)
+        if sorting =='low':
+            products = Product.objects.filter(**searchDict).order_by('price')
+        elif sorting =='high':
+            products = Product.objects.filter(**searchDict).order_by('-price')
+        else:
+            products = Product.objects.filter(**searchDict)
         context = {
         'product_categories':product_categories,
         'products': products,
+        'product_category_id':product_category_id,
         }
         
         return render(request, 'product_listing.html', context) 

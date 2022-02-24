@@ -29,8 +29,12 @@ class Login(View):
     
     def post(self, request):
         form = self.form_class(data = request.POST)
+        redirectURL = request.GET.get('next')
         if form.is_valid():
             AuthLogin(request, form.get_user())
+            if redirectURL:
+                return redirect(redirectURL)
+
             return redirect('home_page')
         context = {
             'product_categories':self.product_categories,
@@ -43,7 +47,7 @@ class Login(View):
 def logout(request):
     """  LOG OUT  """
     AuthLogout(request)
-    return redirect('Login')
+    return redirect('home_page')
 
 
 def register(request):
