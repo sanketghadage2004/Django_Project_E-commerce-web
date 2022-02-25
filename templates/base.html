@@ -89,6 +89,10 @@
                 <div class="header__top__right__auth">
                   <a href="{% url 'register' %}"
                     >
+                    <i class="fa fa-order"></i>Your Order</a
+                  >
+                  <a href="{% url 'register' %}"
+                    >
                     <i class="fa fa-user"></i>Register</a
                   >
                   {% if request.user.is_authenticated %}
@@ -149,6 +153,9 @@
                   <a href="#"><i class="fa fa-twitter"></i></a>
                   <a href="#"><i class="fa fa-linkedin"></i></a>
                   <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                  <a href="{% url 'register' %}"
+                    ><i class="fa fa-order"></i> Your Order</a
+                  >
                   <a href="{% url 'register' %}"
                     ><i class="fa fa-user"></i> Register</a
                   >

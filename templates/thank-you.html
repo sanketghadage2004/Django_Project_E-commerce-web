@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'banner.html' %}
+{% load static %}
+
+<!-- <div class="alert alert-primary" role="alert">
+  Thank You for shopping !!!   Your order Dispatch Soon...
+</div> -->
+<container class="container ">
+
+    <div class="alert alert-success" role="alert">
+      Thank You for shopping !!!   Your order Dispatch Soon... <a href="{% url 'orderStatus'%}" class="alert-link">Check Your Order Status</a>
+    </div>
+</container>
+
+{% endblock content %}

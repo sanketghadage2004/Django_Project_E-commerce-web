@@ -1,43 +1,79 @@
-<button id="rzp-button1">Pay</button>
+<body id="body">
+    
+</body>
+{% csrf_token %}
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
+
+    function success(razorPayResponse) {
+        var csrfToken = '{{csrf_token}}'
+        var data = new FormData();
+        data.append("razorpay_payment_id", razorPayResponse.razorpay_payment_id);
+        data.append("razorpay_order_id", razorPayResponse.razorpay_order_id);
+        data.append("razorpay_signature", razorPayResponse.razorpay_signature);
+        data.append("first_name", '{{first_name}}');
+        data.append("last_name", '{{last_name}}');
+        data.append("address", '{{address}}');
+
+
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4) {
+                console.log(this.responseText);
+                window.location.href = '{% url 'ThankYou' %}'
+            }
+        });
+
+        xhr.open("POST", "{% url 'PaymentSuccess' %}");
+        xhr.setRequestHeader("x-csrftoken", csrfToken);
+        xhr.send(data);
+    }
+    function failedPayment(data){
+        window.location.href = '{% url 'Checkout' %}'
+    }
+
 var options = {
     "key": "rzp_test_M5Cd3ntaZvvW5O", // Enter the Key ID generated from the Dashboard
-    "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "amount": "{{amount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     "currency": "INR",
-    "name": "Acme Corp",
+    "name": "E-shop Pvt.Ltd",
     "description": "Test Transaction",
     "image": " ",
-    "order_id": "order_Izr1ZgxPSE4QHz", //This is a sample Order ID. Pass the `id` obtained in the response of Step 2
+    "order_id": "{{order_id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 2
     "handler": function (response){
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature)
+        //alert(response.razorpay_payment_id);
+        //alert(response.razorpay_order_id);
+        //alert(response.razorpay_signature)
+        success(response)
     },
     "prefill": {
-        "name": "sanket ghadage",
-        "email": "sanketghadage8008@gmail.com",
-        "contact": "8983768008"
+        "name": "{{request.user.first_name}} {{request.user.last_name}}",
+        "email": "{{request.user.email}}",
+        "contact": "{{request.user.UserProfile.mobile}}"
     },
-    "notes": {
-        "address": "Razorpay Corporate Office"
-    },
+    "notes": {    },
     "theme": {
-        "color": "#3399cc"
+        "color": "#3d3d43"
     }
 };
 var rzp1 = new Razorpay(options);
 rzp1.on('payment.failed', function (response){
-        alert(response.error.code);
-        alert(response.error.description);
-        alert(response.error.source);
-        alert(response.error.step);
-        alert(response.error.reason);
-        alert(response.error.metadata.order_id);
-        alert(response.error.metadata.payment_id);
+        //alert(response.error.code);
+        //alert(response.error.description);
+        //alert(response.error.source);
+        //alert(response.error.step);
+        //alert(response.error.reason);
+        //alert(response.error.metadata.order_id);
+        //alert(response.error.metadata.payment_id);
+        failedPayment(response)
+
 });
-document.getElementById('rzp-button1').onclick = function(e){
-    rzp1.open();
-    e.preventDefault();
-}
+
+window.onload = function () {
+        
+        rzp1.open();
+        e.preventDefault();
+    };
 </script>
