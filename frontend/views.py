@@ -4,6 +4,7 @@ from product.models import ProductCategory, Product
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.http import request, HttpResponse
+from cart.views import Cart
 
 
 # Create your views here.
@@ -92,6 +93,54 @@ def contact(request):
 
 
     return render(request, 'contact.html',{ 'product_categories':product_categories} )
+
+
+"""user profile View"""
+def profile(request):
+    
+    product_categories = ProductCategory.objects.filter(status=True)
+
+    return render(request,'userprofile.html',{ 'product_categories':product_categories})
+
+
+"""user profile View"""
+def orderDetails(request):
+    
+        product_categories = ProductCategory.objects.filter(status=True)
+        cartProducts = Cart.objects.filter(user=request.user)
+
+        carts = {}
+        subTotal = 0
+        total = 0
+        shippingCost = 50
+        for key, cartProduct in enumerate(cartProducts):
+            productTotal = int(cartProduct.quantity) * int(cartProduct.Product.price)
+            total += productTotal
+            subTotal += productTotal
+            carts[key] = {
+                'product_image': cartProduct.Product.cover_image,
+                'product_name': cartProduct.Product.name,
+                'product_price': cartProduct.Product.price,
+                'quantity': cartProduct.quantity,
+                'productTotal': productTotal,
+                'cart_id':cartProduct.id
+            }
+        
+        
+        total = shippingCost + subTotal
+        carts = list(carts.values())
+
+        context = {
+            'product_categories': product_categories,
+            'cartProducts': carts,
+            'subTotal':subTotal,
+            'shippingCost': shippingCost,
+            'total':total,
+        }
+        return render(request,'order.html',context)
+
+
+
 
 # class Contact(View):
 

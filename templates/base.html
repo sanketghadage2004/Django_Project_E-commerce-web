@@ -70,8 +70,8 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
       <div class="humberger__menu__logo">
-        <strong><h2>E-shop</h2></strong>
-      </div>
+  <a href="#"><img src="{% static "img/logo4.png"%}" alt=""></a>
+</div>
       <div class="humberger__menu__cart">
         <ul>
           <li>
@@ -87,9 +87,13 @@
 
       <div class="humberger__menu__widget">
                 <div class="header__top__right__auth">
-                  <a href="{% url 'register' %}"
+                  <a href="{% url 'orderDetails' %}"
                     >
                     <i class="fa fa-order"></i>Your Order</a
+                  >
+                  <a href="{% url 'profile' %}"
+                    >
+                    <i class="fa fa-user"></i>Profile</a
                   >
                   <a href="{% url 'register' %}"
                     >
@@ -152,8 +156,10 @@
                   <a href="#"><i class="fa fa-facebook"></i></a>
                   <a href="#"><i class="fa fa-twitter"></i></a>
                   <a href="#"><i class="fa fa-linkedin"></i></a>
-                  <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                  <a href="{% url 'register' %}"
+                  <a href="{% url 'profile' %}"
+                    ><i class="fa fa-user"></i> Profile</a
+                  >
+                  <a href="{% url 'orderDetails' %}"
                     ><i class="fa fa-order"></i> Your Order</a
                   >
                   <a href="{% url 'register' %}"
@@ -181,7 +187,7 @@
         <div class="row">
           <div class="col-lg-3">
             <div class="header__logo">
-              <a href="./index.html"><img src="img/lgo.png" alt="" /></a>
+              <a href="./index.html"><img src="{% static "img/logo4.png"%}" alt="" /></a>
             </div>
           </div>
           <div class="col-lg-7">
