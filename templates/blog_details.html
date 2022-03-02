@@ -3,70 +3,71 @@
 {% include 'banner.html' %}
 {% load static %}
 
-    <!-- Blog Details Section Begin -->
-    <section class="blog-details spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-5 order-md-1 order-2">
-                    <div class="blog__sidebar">
-                        <div class="blog__sidebar__search">
-                            
-                            {% comment %} <form action="#">
-                                <input type="text" placeholder="Search...">
-                                <button type="submit"><span class="icon_search"></span></button>
-                            </form> {% endcomment %}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-7 order-md-1 order-1">
-                    {% comment %} {% for posts in post %} {% endcomment %}
-                    <div class="blog__details__text">
-                        {% comment %} <img src="{% static 'img/blog/details/details-pic.jpg'%}" alt=""> {% endcomment %}
-                        <h3>{{posts.title | title}}</h3>
-                     <p>{{posts.body}}</p>
-                        
-                    </div>
-                    {% comment %} {%endfor%} {% endcomment %}
-                    <div class="blog__details__content">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="blog__details__author">
-                                    <div class="blog__details__author__pic">
-                                    </div>
-                                    <div class="blog__details__author__text">
-                                        <h6>{{posts.author}}</h6>
-                                        <span>E-shop CEO</span>
-                                        <ul>
-                                        <li><i class="fa fa-calendar-o"></i> {{posts.date_added}}</li>
-                                    </ul>
-                                    </div>
+<!-- Blog Details Section Begin -->
+<section class="blog-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-5 order-md-1 order-2">
+                <div class="blog__sidebar">
+                    <div class="blog__sidebar__search">
 
-                    
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="blog__details__widget">
-                                    <ul>
-                                        
-                                        <li><span>Tags:</span> #All, #Trending, #Eshop, #fashion #Electronics, #Life Style</li>
-                                    </ul>
-                                    <div class="blog__details__social">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                                        <a href="#"><i class="fa fa-envelope"></i></a>
-                                    </div>
-                                
-                                </div>
-                            </div>
-                        </div>
+                        {% comment %} <form action="#">
+                            <input type="text" placeholder="Search...">
+                            <button type="submit"><span class="icon_search"></span></button>
+                        </form> {% endcomment %}
                     </div>
-                
                 </div>
             </div>
+            <div class="col-lg-8 col-md-7 order-md-1 order-1">
+                {% comment %} {% for posts in post %} {% endcomment %}
+                <div class="blog__details__text">
+                    <img src="{{posts.blogimage.url}}" alt="" Style="width:30em">
+                    <h3>{{posts.title | title}}</h3>
+                    <p>{{posts.body}}</p>
 
+                </div>
+                {% comment %} {%endfor%} {% endcomment %}
+                <div class="blog__details__content">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="blog__details__author">
+                                <div class="blog__details__author__pic">
+                                </div>
+                                <div class="blog__details__author__text">
+                                    <h6>{{posts.author}}</h6>
+                                    <span>E-shop CEO</span>
+                                    <ul>
+                                        <li><i class="fa fa-calendar-o"></i> {{posts.date_added}}</li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="blog__details__widget">
+                                <ul>
+
+                                    <li><span>Tags:</span> #All, #Trending, #Eshop, #fashion #Electronics, #Life Style
+                                    </li>
+                                </ul>
+                                <div class="blog__details__social">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                    <a href="#"><i class="fa fa-envelope"></i></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </section>
-    <!-- Blog Details Section End -->
+
+    </div>
+</section>
+<!-- Blog Details Section End -->
 {% endblock content %}

@@ -5,6 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.http import request, HttpResponse
 from cart.views import Cart
+from.models import Contact
 
 
 # Create your views here.
@@ -90,7 +91,12 @@ class ProductDetailsView(View):
 def contact(request):
 
     product_categories = ProductCategory.objects.filter(status=True)
-
+    if request.method=="POST":
+        name=request.POST['name']
+        email=request.POST['email']
+        message=request.POST['message']
+        contact=Contact(name=name,email=email, message=message)
+        contact.save()
 
     return render(request, 'contact.html',{ 'product_categories':product_categories} )
 

@@ -4,62 +4,65 @@
 {% include 'banner.html' %}
 
 
-     <!-- Blog Section Begin -->
-    <section class="blog spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-5">
-                    <div class="blog__sidebar">
-                        <div class="blog__sidebar__item">
-                            <h4>Recent BLOG</h4>
-                            <div class="blog__sidebar__recent">
-                                {% for post in posts %}
-                                <a href="{% url 'blog-details' blog_id=post.id%}" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                        <img src="{% static ''%}" alt="" >
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>{{post.title | title}}</h6><p>{{post.body | truncatechars:20}}</p>
-                                        <span>{{post.date_added}}
-                                            {% comment %} {{post.author}} {% endcomment %}
-                                        </span>
-                                    </div>
-                                </a>
-                                {% endfor %}
-                            </div>
-                            
+<!-- Blog Section Begin -->
+<section class="blog spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-5">
+                <div class="blog__sidebar">
+                    <div class="blog__sidebar__item">
+                        <h4>Recent BLOGS</h4>
+                        <div class="blog__sidebar__recent">
+                            {% for post in posts %}
+                            <a href="{% url 'blog-details' blog_id=post.id%}" class="blog__sidebar__recent__item">
+                                <div class="blog__sidebar__recent__item__pic">
+                                    <img src="{{post.blogimage.url}}" alt="" Style="width:5em">
+                                </div>
+                                <div class="blog__sidebar__recent__item__text">
+                                    <h6>{{post.title | title}}</h6>
+                                    <p>{{post.body | truncatechars:20}}</p>
+                                    <span>{{post.date_added}}
+                                    </span>
+                                    <br>
+                                    <span>Author:-{{post.author}}</span>
+                                </div>
+                            </a>
+                            {% endfor %}
                         </div>
+
                     </div>
                 </div>
-                <div class="col-lg-8 col-md-7">
-                    <div class="row">
-                        {% for post in posts %}
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic" >
-                                    <img src="{{post.blogimage.url}}" alt="" >
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> {{post.date_added}}</li>
-                                    </ul>
-                                    <h5><a href="{% url 'blog-details' blog_id=post.id%}">{{post.title | title}}</a></h5>
-                                    <p>{{post.body | truncatechars:140}}</p>
-                                    <h6>Author : {{post.author}}</h6><br>
-                                    <a href="{% url 'blog-details' blog_id=post.id%}" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
-                                </div>
+            </div>
+            <div class="col-lg-8 col-md-7">
+                <div class="row">
+                    {% for post in posts %}
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="blog__item">
+                            <div class="blog__item__pic">
+                                <img src="{{post.blogimage.url}}" alt="">
+                            </div>
+                            <div class="blog__item__text">
+                                <ul>
+                                    <li><i class="fa fa-calendar-o"></i> {{post.date_added}}</li>
+                                </ul>
+                                <h5><a href="{% url 'blog-details' blog_id=post.id%}">{{post.title | title}}</a></h5>
+                                <p>{{post.body | truncatechars:140}}</p>
+                                <h6>Author : {{post.author}}</h6><br>
+                                <a href="{% url 'blog-details' blog_id=post.id%}" class="blog__btn">READ MORE <span
+                                        class="arrow_right"></span></a>
                             </div>
                         </div>
-                        {%endfor%}
-                       
-                        <div class="col-lg-12">
-                            <hr>
-                        </div>
+                    </div>
+                    {%endfor%}
+
+                    <div class="col-lg-12">
+                        <hr>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Blog Section End -->
- 
- {% endblock content %}
+    </div>
+</section>
+<!-- Blog Section End -->
+
+{% endblock content %}
