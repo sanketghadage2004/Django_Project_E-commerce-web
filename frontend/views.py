@@ -88,13 +88,21 @@ class ProductDetailsView(View):
 
 
 
+from django.contrib import messages
 def contact(request):
 
     product_categories = ProductCategory.objects.filter(status=True)
+    messages.success(request, 'Profile details updated.')
     if request.method=="POST":
         name=request.POST['name']
         email=request.POST['email']
         message=request.POST['message']
+        # if name
+        messages.success(request, 'Profile details updated.')
+
+        # messages.add_message(request, messages.INFO, 'Hello world.')
+        messages.error(request, 'Document deleted.')
+
         contact=Contact(name=name,email=email, message=message)
         contact.save()
 

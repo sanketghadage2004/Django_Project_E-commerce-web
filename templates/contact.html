@@ -89,4 +89,12 @@
     </div>
     <!-- Contact Form End -->
 
+    {% for message in messages %}
+    <div class="alert alert-warning alert-success fade show" role="alert">
+  <strong>Message :!</strong>{{ message }} 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+    {% endfor %}
+
+
 {% endblock content %}
