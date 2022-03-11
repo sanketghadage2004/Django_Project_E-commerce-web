@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.http import request, HttpResponse
 from cart.views import Cart
 from.models import Contact
+from django.contrib import messages
+
 
 
 # Create your views here.
@@ -88,23 +90,20 @@ class ProductDetailsView(View):
 
 
 
-from django.contrib import messages
 def contact(request):
-
     product_categories = ProductCategory.objects.filter(status=True)
-    messages.success(request, 'Profile details updated.')
     if request.method=="POST":
         name=request.POST['name']
         email=request.POST['email']
         message=request.POST['message']
-        # if name
-        messages.success(request, 'Profile details updated.')
 
-        # messages.add_message(request, messages.INFO, 'Hello world.')
-        messages.error(request, 'Document deleted.')
+        if len(name)<2 or len(email)<5 or len(message)<5:
+            messages.error(request, 'Please fill form correctly.')
+        else:
+            contact=Contact(name=name,email=email, message=message)
+            contact.save()
+            messages.success(request, 'Message Send Successfully...')
 
-        contact=Contact(name=name,email=email, message=message)
-        contact.save()
 
     return render(request, 'contact.html',{ 'product_categories':product_categories} )
 
@@ -156,10 +155,7 @@ def orderDetails(request):
 
 
 
-# class Contact(View):
 
-#     def post(self):
-#         return render(request, 'home_page')
 
 
 # def test_login(request):
