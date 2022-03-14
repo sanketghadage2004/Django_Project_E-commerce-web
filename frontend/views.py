@@ -32,7 +32,6 @@ class ProductListingView(View):
         product_categories = ProductCategory.objects.filter(status=True)
         search = request.GET.get('search')
         sorting = request.GET.get('sorting')
-        print(request.GET)
         minPrice=request.GET.get('min')
         maxPrice=request.GET.get('max')
 

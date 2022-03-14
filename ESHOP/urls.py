@@ -12,5 +12,7 @@ urlpatterns = [
     path('auth/', include('authentication.urls')),
     path('accounts/', include('authentication.urls')),
     path('blog/',include('blog.urls')),
+    path('api/',include('api.urls')),
+
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
