@@ -8,5 +8,5 @@ Online Shopping website using Django and Django REST framework
 • Razorpay is used for payment gateway integration,
 • User registration, Log In & Logout with Authentication
 • Django admin panel customisation, 
-• DRF use in Registration and Login, Logout
+• DRF use in Registration and Login, product, product category , cart, checkout
 • Fully Responsive website you can use in mobile as well as tablet
