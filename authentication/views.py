@@ -9,7 +9,7 @@ from frontend import urls
 
 
 # Create your views here.
-"""LOG IN CLASS"""
+""" REGOSTER , LOGIN , LOGOUT  CLASSES"""
 
 class Login(View):
 
