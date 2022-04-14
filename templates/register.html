@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block content %}
 {%load static %}
 {% include 'banner.html' %}
@@ -10,12 +10,12 @@
     </div>
     <form action="" method="POST">
       {% csrf_token %}
-      <input type="text" name="first_name" placeholder="first name" />
-      <input type="text" name="last_name" placeholder="last name" />
-      <input type="text" name="username" placeholder="username" />
-      <input type="email" name="email" placeholder="Enter your Email" />
-      <input type="password" name="password1" placeholder="password" />
-      <input type="password" name="password2" placeholder="Confirm password" />
+      <input type="text" name="first_name" placeholder="first name" required />
+      <input type="text" name="last_name" placeholder="last name" required />
+      <input type="text" name="username" placeholder="username" required />
+      <input type="email" name="email" placeholder="Enter your Email" required />
+      <input type="password" name="password1" placeholder="password" required />
+      <input type="password" name="password2" placeholder="Confirm password" required />
       <div class="col-lg-12 text-center">
         <button type="submit" class="site-btn">Register</button>
       </div>
