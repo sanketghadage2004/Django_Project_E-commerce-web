@@ -164,5 +164,5 @@ REST_FRAMEWORK = {
 # Simplified static file serving.
 STATIC_FILE = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
