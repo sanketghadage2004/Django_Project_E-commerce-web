@@ -1,5 +1,5 @@
 Online Shopping website using Django and Django REST framework 
-
+Project Hosted On Heroku : https://e-shop-by-sanket.herokuapp.com/
  Topic cover in this project
 • Showing Dynamic product on Home Page, 
 • Add product from admin panel, 
