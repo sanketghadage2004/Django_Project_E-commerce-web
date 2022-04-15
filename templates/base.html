@@ -56,11 +56,11 @@
 
     <div class="humberger__menu__widget">
       <div class="header__top__right__auth">
+        {% if request.user.is_authenticated %}
         <a href="{% url 'orderDetails' %}">
           <i class="fa fa-order"></i>Your Order</a>
         <a href="{% url 'profile' %}">
           <i class="fa fa-user"></i>Profile</a>
-        {% if request.user.is_authenticated %}
         <a href="{% url 'logout' %}"><i class="fa fa-user"></i> Logout</a>
         {% else %}
         <a href="{% url 'Login' %}"><i class="fa fa-user"></i> Login</a>
@@ -113,13 +113,11 @@
                 <a href="#"><i class="fa fa-facebook"></i></a>
                 <a href="#"><i class="fa fa-twitter"></i></a>
                 <a href="#"><i class="fa fa-linkedin"></i></a>
+                {% if request.user.is_authenticated %}
                 <a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a>
                 <a href="{% url 'orderDetails' %}"><i class="fa fa-order"></i> Your Order</a>
-
               </div>
-
               <div class="header__top__right__auth">
-                {% if request.user.is_authenticated %}
                 <a href="{% url 'logout' %}"><i class="fa fa-user"></i> Logout</a>
                 {% else %}
                 <a href="{% url 'Login' %}"><i class="fa fa-user"></i> Login</a>
