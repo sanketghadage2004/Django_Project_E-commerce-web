@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-3i-8*$x!055$^k(koy57nldk)z=gh+xfqtm3vn18h0a84b8x54
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["e-shop-by-sanket.herokuapp.com","127.0.0.1:8000"]
 # 127.0.0.1
 # "e-shop-by-sanket.herokuapp.com","localhost"]
 
@@ -160,5 +160,5 @@ REST_FRAMEWORK = {
 
 # Simplified static file serving.
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
