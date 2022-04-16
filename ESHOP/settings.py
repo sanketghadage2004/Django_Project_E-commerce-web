@@ -29,7 +29,6 @@ SECRET_KEY = 'django-insecure-3i-8*$x!055$^k(koy57nldk)z=gh+xfqtm3vn18h0a84b8x54
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True 
-# config('DEBUG', default=False, cast = bool)
 
 ALLOWED_HOSTS = ["e-shop-by-sanket.herokuapp.com","127.0.0.1","localhost",]
 
@@ -164,4 +163,4 @@ REST_FRAMEWORK = {
 # Simplified static file serving.
 STATIC_FILE = os.path.join(BASE_DIR, 'staticfiles')
 
-
+CSRF_TRUSTED_ORIGINS = ['e-shop-by-sanket.herokuapp.com','127.0.0.1', 'localhost']
