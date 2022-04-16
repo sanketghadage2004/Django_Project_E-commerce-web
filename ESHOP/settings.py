@@ -163,4 +163,4 @@ REST_FRAMEWORK = {
 # Simplified static file serving.
 STATIC_FILE = os.path.join(BASE_DIR, 'staticfiles')
 
-CSRF_TRUSTED_ORIGINS = ['e-shop-by-sanket.herokuapp.com','127.0.0.1', 'localhost']
+CSRF_TRUSTED_ORIGINS = ["https://e-shop-by-sanket.herokuapp.com"]
