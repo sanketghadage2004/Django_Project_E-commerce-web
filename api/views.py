@@ -16,6 +16,7 @@ from django.contrib.auth.models import User
 
 
 class UserAuthApi(ObtainAuthToken):
+    """Add login to API TOKEN"""
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
 
 
@@ -134,5 +135,8 @@ class Checkout(views.APIView):
         return response.Response({'status':'success'})
 
 class UserView(viewsets.ModelViewSet):
+    """ Users API """
+    authentication_classes = (authentication.TokenAuthentication,)
+    permissions_classes = (IsAuthenticated)
     serializer_class = serializers.UsersSerializer
     queryset = User.objects.filter(is_superuser=False, is_staff=False)

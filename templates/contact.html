@@ -56,6 +56,7 @@
     </div>
 </div>
 <!-- Map End -->
+{% if request.user.is_authenticated %}
 <div class="container mt-2">
 
     {% for message in messages %}
@@ -66,6 +67,7 @@
     {% endfor %}
 </div>
 <!-- Contact Form Begin -->
+
 <div class="contact-form spad">
     <div class="container">
         <div class="row">
@@ -92,6 +94,12 @@
         </form>
     </div>
 </div>
+{% else %}
+<br>
+<h3 class="text-center">Please Login To Send Message</h3>
+<br>
+{% endif %}
+
 <!-- Contact Form End -->
 
 

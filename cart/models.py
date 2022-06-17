@@ -13,4 +13,4 @@ class Cart(models.Model):
 
     def __str__(self):
         """string representetion of cart"""
-        return f'{self.user} {self.Product}'
+        return f'USER: {self.user} / PRODUCT: {self.Product} / QUANTITY: {self.quantity}'

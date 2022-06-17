@@ -49,7 +49,6 @@ class ProductListingView(View):
             maxPrice= int(maxPrice.replace('$',''))
             searchDict['price__lte'] = maxPrice
         
-        # print(minPrice)
 
         if product_category_id and product_category_id != 'None':
             searchDict['product_category_id'] = product_category_id
@@ -82,7 +81,6 @@ class ProductDetailsView(View):
             'relatedProducts':relatedProducts
         }
 
-        # user = User.objects.get(id)
         return render(request, 'product-details.html', context )
 
 
@@ -97,7 +95,7 @@ def contact(request):
         message=request.POST['message']
 
         if len(name)<2 or len(email)<5 or len(message)<5:
-            messages.error(request, 'Please fill form correctly.')
+            messages.error(request, 'Please fill form correctly...')
         else:
             contact=Contact(name=name,email=email, message=message)
             contact.save()
@@ -107,16 +105,16 @@ def contact(request):
     return render(request, 'contact.html',{ 'product_categories':product_categories} )
 
 
-"""user profile View"""
 def profile(request):
+    """user profile View"""
     
     product_categories = ProductCategory.objects.filter(status=True)
 
     return render(request,'userprofile.html',{ 'product_categories':product_categories})
 
 
-"""user profile View"""
 def orderDetails(request):
+        """order details View"""
     
         product_categories = ProductCategory.objects.filter(status=True)
         cartProducts = Cart.objects.filter(user=request.user)
@@ -156,7 +154,7 @@ def orderDetails(request):
 
 
 
-
+"""dummy user """
 # def test_login(request):
 #     user = User.objects.get(id = 2)
 #     login(request, user)
