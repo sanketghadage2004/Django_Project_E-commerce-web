@@ -6,7 +6,13 @@
 <div class="contact-form spad">
   <div class="container">
     <div class="contact__form__title">
-      <h2>Register User here</h2>
+      <h2>Register User here</h2><br>
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message :</strong> {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
     </div>
     <form action="" method="POST">
       {% csrf_token %}
