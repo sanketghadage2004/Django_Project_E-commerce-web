@@ -6,6 +6,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as AuthLogin, logout as AuthLogout
 from django.contrib.auth.models import User, auth
 from frontend import urls
+from django.contrib import messages, auth
+
 
 
 # Create your views here.
@@ -60,8 +62,11 @@ def register(request):
         email = request.POST['email']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
-
-        user = User.objects.create_user(first_name = first_name, last_name = last_name,  username = username, email = email, password = password1)
+        if User.objects.filter(username=username).exists():
+            messages.error(request, 'The username already exists')
+            return redirect('register')
+        else:
+            user = User.objects.create_user(first_name = first_name, last_name = last_name,  username = username, email = email, password = password1)
         user.save()
         
         return redirect('Login')
